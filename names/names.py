@@ -1,4 +1,5 @@
 import time
+from collections import defaultdict
 
 start_time = time.time()
 
@@ -11,20 +12,16 @@ names_2 = f.read().split("\n")  # List containing 10000 names
 f.close()
 
 join_names = names_1 + names_2
-cache = dict()
+cache = defaultdict(int)
 duplicates = []
 
-for name in join_names:
-    try:
-        if cache[name] == 1:
-            cache[name] += 1
-            duplicates.append(name)
-        elif cache[name] > 1:
-            continue
-    except KeyError as e:
-        cache[name] = 1
-        continue
+for name in names_1:
+    cache[name] += 1
+for name in names_2:
+    if cache[name]:
+        duplicates.append(name)
 
+      
 end_time = time.time()
 print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
 print (f"runtime: {end_time - start_time} seconds")

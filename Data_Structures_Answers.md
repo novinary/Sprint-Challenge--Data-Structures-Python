@@ -16,8 +16,7 @@ O(n)
 O(n^2) as there was a double for loop in the original code 
 
 6. What is the space complexity of the provided code in `names.py`?
-I think O(n/2) as in the worst case, each item would have a duplicate. This means I would need to store a list
-of all duplicates. For e.g. If there weere 20,000 names. I would store 10,000.
+O(1)
 
 7. What is the runtime complexity of your optimized code in `names.py`?
 O(n) as my code uses a cache via a python dictionary. Incorportating a cache is efficient as it looks up values at O(1) time 
